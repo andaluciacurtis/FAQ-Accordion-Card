@@ -3,6 +3,7 @@ html {
   height: 100%;
   background-image:linear-gradient(hsl(273, 75%, 66%), hsl(240, 73%, 65%));
   font-family: 'Kumbh Sans', sans-serif;
+  color:hsl(237, 12%, 33%);
 }
 
 .outer-container {
@@ -14,9 +15,8 @@ main {
   display: flex;
   background-color: white;
   width: 50%;
-  height: 50%;
   border-radius: 20px;
-  box-shadow: 0px 10px 20px hsla(238, 29%, 16%, 0.5);
+  box-shadow: 0px 20px 20px hsla(238, 29%, 16%, 0.274);
 
   position: absolute;
   top: 50%;
@@ -63,6 +63,13 @@ h1 {
   padding-bottom: 20px;
 }
 
+.tab {
+  width:90%;
+  max-height:30px;
+  overflow:hidden;
+  transition: max-height 0.5s;
+}
+
 .tabheading {
   padding: 10px;
   display: flex;
@@ -76,12 +83,21 @@ h1 {
   transition: transform 1s;
 }
 
-.contents {
-  display: none;
+.tab:not(.selected) .tabheading:hover img {
+  animation:bounce 0.5s infinite;
+}
+
+@keyframes bounce {
+  25% {
+    transform: translateY(3px);
+  }
+  75% {
+    transform: translateY(-3px);
+  }
 }
 
 hr {
-  border: 1px solid rgba(128, 128, 128, 0.178);
+  border: 1px solid hsla(240, 4%, 91%, 0.39);
 }
 
 .selected .tabheading {
@@ -92,12 +108,13 @@ hr {
   transform:scaleY(-1);
 }
 
-.selected .contents {
-  display: block;
+.tab.selected {
+  max-height:100px;
 }
 
 .contents {
   padding: 10px;
   font-size: 0.9rem;
   width: 90%;
+  color:hsl(240, 6%, 50%);
 }
